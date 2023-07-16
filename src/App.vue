@@ -1,26 +1,57 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="nav">
+    <router-link to="/">Início</router-link> -
+    <router-link to="/basket">Carrinho (0)</router-link> -
+  </div>
+  <router-view/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+
+    created(){
+      axios.get('https://fakestoreapi.com/products/')
+      .then(response =>{
+        console.log(response.data);
+      })
+    }
   }
-}
+  
 </script>
 
-<style>
+
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width: 1280px;
+  margin: 80px auto;
+}
+
+#nav {
+  padding: 16px 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(37, 37, 37);
+  color: white;
+
+
+  a {
+    color: white;
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: #007bff;
+    }
+  }
 }
 </style>
