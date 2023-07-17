@@ -34,8 +34,10 @@ export default {
     }
   },
 
-  methods: {
-   
+  computed: {
+   products (){
+    return this.$store.state.products;
+   }
   }
 }
 </script>
