@@ -2,10 +2,10 @@
   <div class="basket">
     <div class="items">
 
-      <div class="item">
-        <div class="remove">Remover Produto</div>
-        <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
-        <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
+      <div v-for="(product, index) in productsInBag" :key="index"
+      class="item">
+        <div class="photo"><img :src="product.image" alt=""></div>
+        <div class="description">{{ product.title }} </div>
         <div class="price">
           <span class="quantity-area">
             <button disabled="">-</button>
@@ -22,9 +22,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
   name: 'ShoppingBasket',
+
+  computed: mapState([
+    'productsInBag' 
+  ]),
 
   methods: {
    
