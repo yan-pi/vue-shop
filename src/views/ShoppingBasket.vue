@@ -4,6 +4,9 @@
 
       <div v-for="(product, index) in productsInBag" :key="index"
       class="item">
+        <div
+        @click="this.$store.dispatch('RemoveFromBag', product.id)"
+        class="remove">Remover Produto</div>
         <div class="photo"><img :src="product.image" alt=""></div>
         <div class="description">{{ product.title }} </div>
         <div class="price">
