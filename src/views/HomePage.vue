@@ -12,6 +12,10 @@
         <button 
         v-if="!isInBag(product)"
         @click="addToBag(product)">Adicionar ao carrinho</button>
+        <button 
+        v-else
+        @click="RemoveFromBag(product)"
+        class="remove">Remover</button>
       </div>
       {{ productsInBag.length }}
     </div>
@@ -47,6 +51,9 @@ export default {
     isInBag(product){
       return this.productsInBag.find(item => item.id == product.id)
     },
+    RemoveFromBag(){
+      return this.productsInBag.pop()
+  }
   }
 }
 </script>
