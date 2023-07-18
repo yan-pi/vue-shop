@@ -11,11 +11,11 @@
         <div class="description">{{ product.title }} </div>
         <div class="price">
           <span class="quantity-area">
-            <button disabled="">-</button>
-            <span class="quantity">1</span>
-            <button>+</button>
+            <button @click="product.quantity--">-</button>
+            <span class="quantity">{{ product.quantity }}</span>
+            <button @click="product.quantity++">+</button>
           </span>
-          <span class="amount">R$ 22.30</span>
+          <span class="amount">{{  (product.price * product.quantity).toFixed(2) }}</span>
         </div>
       </div>
       <div class="grand-total"> Total do pedido: R$ 22.30</div>
